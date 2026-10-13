@@ -25,6 +25,8 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          accept-android-sdk-licenses: true
 
       - name: Extract source
         run: unzip -o vivo_browser_adblock_api102_source.zip
