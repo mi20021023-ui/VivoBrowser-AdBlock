@@ -31,8 +31,11 @@ jobs:
         run: |
           yes | "$ANDROID_HOME/cmdline-tools/16.0/bin/sdkmanager" --licenses
 
-      - name: Extract source
-        run: unzip -o vivo_browser_adblock_api102_source.zip
+      - name: Fix manifest description resource
+        working-directory: vivo_browser_adblock_api102
+        run: |
+          sed -i 's/android:description="[^"]*"//g' app/src/main/AndroidManifest.xml
+          echo "Manifest fix applied"
 
       - name: Build APK
         working-directory: vivo_browser_adblock_api102
